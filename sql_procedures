@@ -1,0 +1,61 @@
+--to insert into dept_head
+create or replace procedure insert_into_dept_heads(
+  p_deptID text,
+  p_headID text,
+  p_name text
+)
+language plpgsql as $$
+begin
+ insert into dept_heads(deptid,headid,name) values (p_deptID,p_headID,p_name);
+end;
+$$;
+
+--to insert into department_details
+CREATE OR REPLACE PROCEDURE insert_department(
+    p_deptID TEXT,
+    p_deptname TEXT,
+    p_dept_strength NUMERIC,
+    p_dept_headID TEXT
+)
+LANGUAGE plpgsql
+AS $$
+BEGIN
+    INSERT INTO department_details (deptID, deptname, dept_strength, dept_headID)
+    VALUES (p_deptID, p_deptname, p_dept_strength, p_dept_headID);
+END;
+$$
+;
+
+--to insert into emp_job details table
+CREATE OR REPLACE PROCEDURE insert_emp_jobdetails(
+    p_empid TEXT,
+    p_emp_deptID TEXT,
+    p_emp_position TEXT,
+    p_emp_salary NUMERIC,
+    p_emp_dateOfJoining TIMESTAMP WITH TIME ZONE
+)
+LANGUAGE plpgsql
+AS $$
+BEGIN
+    INSERT INTO emp_jobdetails (empid, emp_deptID, emp_position, emp_salary, emp_dateOfJoining)
+    VALUES (p_empid, p_emp_deptID, p_emp_position, p_emp_salary, p_emp_dateOfJoining);
+END;
+$$
+;
+
+--to insert employee personal details
+CREATE OR REPLACE PROCEDURE insert_emp_personal_details(
+    p_empid TEXT,
+    p_first_name TEXT,
+    p_last_name TEXT,
+    p_address TEXT,
+    p_dob TIMESTAMP WITH TIME ZONE
+)
+LANGUAGE plpgsql
+AS $$
+BEGIN
+    INSERT INTO Emp_personal_details (empid, first_name, last_name, address, dob)
+    VALUES (p_empid, p_first_name, p_last_name, p_address, p_dob);
+END;
+$$
+;
