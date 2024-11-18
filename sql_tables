@@ -1,0 +1,41 @@
+--to create a table of department head details
+create table
+  dept_heads (
+    deptID text,
+    headID text not null,
+    name text not null,
+    primary key (headID)
+  );
+
+--to store department details
+create table
+  department_details (
+    deptID text primary key,
+    deptname text unique,
+    dept_strength numeric not null,
+    dept_headID text,
+    foreign key (dept_headID) references dept_heads (headID)
+  );
+
+--to store employee details required for the job
+create table
+  emp_jobdetails (
+    empid text primary key,
+    emp_deptID text not null,
+    emp_position text not null,
+    emp_salary numeric not null,
+    emp_dateOfJoining timestamp with time zone not null,
+    foreign key (emp_deptID) references department_details (deptID)
+  );
+
+--to store personal details of the employess
+create table
+  Emp_personal_details (
+    empid text,
+    first_name text not null,
+    last_name text not null,
+    address text not null,
+    dob timestamp with time zone not null,
+    primary key (empid),
+    foreign key (empid) references emp_jobdetails (empid)
+  );
